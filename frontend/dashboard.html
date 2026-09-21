@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <main class="card">
-    <h1>Dashboard</h1>
+
+    <header class="top-bar">
+      <h1>Home</h1>
+      <button id="logout">Logout</button>
+    </header>
+
     <p id="welcome">Loading...</p>
-    <button id="logout">Logout</button>
+
+    <div class="image-container">
+
+      <div class="image-box">
+        <span class="eyebrow">Made for You</span>
+        <span class="title">New Music Mix</span>
+        <img src="image1.jpg" alt="Image 1">
+      </div>
+
+      <div class="image-box">
+        <span class="eyebrow">Featuring Kacey Musgraves</span>
+        <span class="title">The Songwriters</span>
+        <img src="image2.jpg" alt="Image 2">
+      </div>
+
+      <div class="image-box">
+        <span class="eyebrow">Featuring Kanye Washington</span>
+        <span class="title">Station</span>
+        <img src="image3.jpg" alt="Image 3">
+      </div>
+
+      <div class="image-box">
+        <span class="eyebrow">Made for You</span>
+        <span class="title">Discover Mix</span>
+        <img src="image4.jpg" alt="Image 4">
+      </div>
+
+    </div>
+
   </main>
 
   <script>
+
     const API_URL = "https://charles-8khr.onrender.com";
+
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -26,23 +64,42 @@
         Authorization: `Bearer ${token}`
       }
     })
+
     .then(response => {
-      if (!response.ok) throw new Error();
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
       return response.json();
+
     })
+
     .then(data => {
+
       document.getElementById("welcome").textContent =
         `Welcome, ${data.user.name} (${data.user.email})`;
+
     })
+
     .catch(() => {
+
       localStorage.removeItem("token");
+
       window.location.href = "index.html";
+
     });
 
     document.getElementById("logout").addEventListener("click", () => {
+
       localStorage.removeItem("token");
+
       window.location.href = "index.html";
+
     });
+
   </script>
+
 </body>
+
 </html>

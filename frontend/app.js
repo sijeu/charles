@@ -1,4 +1,4 @@
-const API_URL = "https://charles-8khr.onrender.com";
+const API_URL = "https://charles-8khr.onrender.com/";
 
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");

@@ -110,15 +110,17 @@ body:has(.dashboard) {
 }
 
 .dashboard .image-container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
   gap: 16px;
 }
 
 .dashboard .image-box {
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  min-width: 0;
 }
 
 .dashboard .eyebrow {
@@ -136,8 +138,8 @@ body:has(.dashboard) {
 
 .dashboard .image-box img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  height: 140px;
+  aspect-ratio: auto;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0,0,0,.15);
@@ -145,6 +147,9 @@ body:has(.dashboard) {
 
 @media (max-width: 700px) {
   .dashboard .image-container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-wrap: wrap;
+  }
+  .dashboard .image-box {
+    flex: 1 1 calc(50% - 8px);
   }
 }

@@ -66,9 +66,17 @@ button:hover {
 
 /* ---------- Dashboard ---------- */
 
+body:has(.dashboard) {
+  background: #fff;
+  align-items: flex-start;
+}
+
 .card.dashboard {
-  width: 1000px;
-  max-width: 95%;
+  width: 100%;
+  max-width: 1100px;
+  padding: 32px 24px;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .dashboard .top-bar {
@@ -88,7 +96,7 @@ button:hover {
 .dashboard #welcome {
   font-size: 14px;
   color: #666;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .dashboard #logout {
@@ -102,32 +110,24 @@ button:hover {
 }
 
 .image-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scroll-snap-type: x mandatory;
 }
 
 .image-box {
-  flex: 0 0 220px;
   display: flex;
   flex-direction: column;
-  scroll-snap-align: start;
+  min-width: 0;
 }
 
 .eyebrow {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
   color: #8e8e93;
-  text-transform: uppercase;
-  letter-spacing: .4px;
-}
-
-.image-box .title {
-  font-size: 15px;
-  font-weight: 500;
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .image-box img {
@@ -136,9 +136,10 @@ button:hover {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0,0,0,.15);
-  transition: transform .2s ease;
 }
 
-.image-box img:hover {
-  transform: scale(1.03);
+@media (max-width: 700px) {
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
